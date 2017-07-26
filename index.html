@@ -1,0 +1,137 @@
+<!-- Reprise du code formateur. -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mon Premier Ajax</title>
+    <script src="scripts/ajax.js"></script>
+
+
+    
+</head>
+<body>
+    <p id="para"></p>
+    <button id="requete">Lance Requête</button>
+    <p id="para2"></p>
+    <button id="requete2">Lance Requête</button>
+    <script>
+
+        document.querySelector('#requete')
+            .addEventListener('click',function(){
+            doAjax({
+                url:'fichier.txt',
+                callback: function(reponse) {
+                    alert(reponse);
+                }
+            });
+        });
+
+        document.querySelector("#requete2").addEventListener("click", function() {
+            doAjax({
+                url:'README.md',
+                callback: function(reponse) {
+                    let div = document.createElement("div");
+                    div.innerHTML = reponse;
+                    document.querySelector("#para2").appendChild("div");
+                }
+            })
+        })
+        
+
+        document.querySelector('#requete2')
+            .addEventListener('click',function(){
+
+        //On crée une nouvelle instance d'objet AJAX
+        let ajax = new XMLHttpRequest();
+        //AJAX étant une service asynchrone, il va falloir
+        //lui dire via des évènements comment se comporter
+        //au moment où il aura terminé sa requête et que 
+        //sa réponse sera disponible
+        ajax.onreadystatechange = function() {
+            /*Le readystatechange sera appelé un certain
+            nombre de fois selon où en est notre requête
+            (codes dispo sur mozilla). Le seul code qui
+            va nous intéresser nous sera celui indiquant que
+            la requête est terminé et la réponse disponible : 4
+            */
+            if(ajax.readyState === 4) {
+                //On ne voudra manipuler la réponse seulement si
+                //la requête s'est couronnée de succès
+                if(ajax.status === 200 || ajax.status === 304) {
+                    //La réponse de la requête se trouve alors dans
+                    //l'objet ajax dans sa propriété response.
+                    document.querySelector('#para2').innerHTML = 
+                            ajax.response;
+                }
+            }
+        };
+            //On ouvre la requête en lui fournissant le type de
+            //requête HTTP, l'url à requêter et si c'est synchrone ou non
+            ajax.open('GET', 'fichier.txt', true);
+            //On envoie la requête
+            ajax.send();
+        });
+    </script>
+</body>
+</html>
+
+<!--  Ancien code 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Introduction en Ajax</title>
+    <script>
+    //Faire une requete http JS vers le fichier.txt .
+    let ajax = new XMLHttpRequest(); //object qui sert a faire une requête.
+    
+        //AJAX étant un service asynchrome, il va falloire
+        // lui dire via des evenement comment se comporter au 
+        //moment ou il aura terminer sa requete et que sa
+        //reponse seras disponible.
+        ajax.onreadystatechange = function() {
+            /*Le readyStatChange sera apple un certain nimber de fois selon 
+            ou est notre requete (code dispo sur mozilla). le seul code
+            qui va nous intéréssé nous sera celui indiquant que
+            la requete est terminer et la reponse disponible.
+            */
+
+            //Voir github pour les comments de JEANS.
+            if(ajax.readyState === 4) { //pourquoi 4, parcequ'il y a 4 value voir google readyState ajax.
+                
+                if (ajax.status === 200 || ajax.status === 304) { //200 = sucess et 304 = undifined.
+                console.log(ajax.response);
+                button = document.querySelector("#btn");
+                button.addEventListener("click", function() {
+                    paraf = document.querySelector("#paraf").innerHTML = ajax.response;
+                })
+                }
+            }
+        };
+
+    //On va ouvrirle fichier
+    ajax.open('GET', 'fichier.txt', true);
+    ajax.send();
+    //Maintenant si on va sur google.inspecterl'élement.network ctrl + R fichier.txt apparait.
+    console.log("Bloup" , ajax.response);
+    //Voir console
+    document.querySelector("").addEventListener("click", dojax() {
+        url: "";
+        method: "";
+    });
+    </script>
+</head>
+<body>
+    <button id="btn">Clique ici</button>
+    <p id="paraf"></p>
+
+</body>
+</html>
+
+
+-->
