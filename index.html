@@ -7,16 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mon Premier Ajax</title>
-    <script src="scripts/ajax.js"></script>
+    <script src="script/ajax.js"></script>
 
 
     
 </head>
 <body>
     <p id="para"></p>
-    <button id="requete">Lance Requête</button>
+    <button id="requete">Lance une requête</button>
     <p id="para2"></p>
-    <button id="requete2">Lance Requête</button>
+    <button id="requete2">Lance une requête</button>
     <script>
 
         document.querySelector('#requete')
@@ -29,16 +29,17 @@
             });
         });
 
-        document.querySelector("#requete2").addEventListener("click", function() {
+        document.querySelector("#requete2")
+            .addEventListener("click", function() {
             doAjax({
                 url:'README.md',
                 callback: function(reponse) {
                     let div = document.createElement("div");
                     div.innerHTML = reponse;
-                    document.querySelector("#para2").appendChild("div");
+                    document.querySelector("#para2").appendChild(div);
                 }
             })
-        })
+        });
         
 
         document.querySelector('#requete2')
@@ -77,6 +78,8 @@
     </script>
 </body>
 </html>
+
+
 
 <!--  Ancien code 
 <!DOCTYPE html>
