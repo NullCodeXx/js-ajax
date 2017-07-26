@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax contenu typé</title>
+    <script src="script/ajax.js"></script>
+</head>
+<body>
+    <p>Page qui contient des requetes do ajax</p>
+    <div id="contenu"></div>
+
+    <script>
+        doajax({
+            url:'pets.html',
+            callback : function(reponse) {
+                let parser = new DOMParser();
+                let pets = parser.parseFromString(reponse, 'text/html');
+                
+                document.querySelector("#contenu").appendChild(pets.querySelector('section'));
+            }
+        });
+
+
+        doajax({
+            url: "data.json",
+            callback: function(reponse) {
+                let object = json.parser(reponse);
+                console.log(object);
+            }
+        });
+</script>
+
+    <a href="../../index.html">Fichier Index</a>
+    <a href="pets.html">Fichier Pets</a>
+    <a href="data.json">Fichier Json</a>
+</body>
+</html>

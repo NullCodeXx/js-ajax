@@ -1,0 +1,20 @@
+// Fichier json qui permet de travailer avec js et type de donnée, voir google.
+
+[
+    "atribut1":10,
+    "atribut2":"text",
+    "atribut3":[
+        true,
+        false,
+        true
+    ]
+]
+
+[
+    {"nom": "rex", "age": 3},
+    {"nom": "frite", "age": 12},
+    {"nom": "mayo", "age": 4},
+    {"nom": "ketchup", "age": 8},
+    {"nom": "sociss", "age": 14},
+]
+

@@ -1,6 +1,10 @@
 /*
 Copie de la requête ajax du fichier index.html.
 */
+// lien de redirection.
+<a href="../index.html">Fichier Index</a>
+<a href="ajax-type/ajax-type.html">Fichier Ajax-type</a>
+<a href="ajax-type/data.json">Fichier json</a>
 
 function doAjax(options) {
     //On définit les paramètres par défaut de notre requete
@@ -62,7 +66,7 @@ function assignArgs(source, target) {
     }
 }
 
-
+    
 
 
 
