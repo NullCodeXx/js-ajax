@@ -26,8 +26,16 @@
         doajax({
             url: "data.json",
             callback: function(reponse) {
-                let object = json.parser(reponse);
+                let object = JSON.parser(reponse);
                 console.log(object);
+                /*
+                let ul =  document.querySelector('#ulchien');
+                for(let chien of object) {
+                    let li = document.createElement("li");
+                    li.textContent = chien.nom + "" + chien.age;
+                    ul.appendChild(li);
+                }
+                */
             }
         });
 </script>

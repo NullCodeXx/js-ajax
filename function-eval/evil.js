@@ -1,0 +1,1 @@
+let string = "Vous venez de récuperer la string du fichier evil.js";
