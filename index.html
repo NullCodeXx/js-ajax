@@ -8,9 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mon Premier Ajax</title>
     <script src="script/ajax.js"></script>
-
-
-    
 </head>
 <body>
     <p id="para"></p>
@@ -51,6 +48,8 @@
         //lui dire via des évènements comment se comporter
         //au moment où il aura terminé sa requête et que 
         //sa réponse sera disponible
+
+        //A chaque fois que la function change d'état.
         ajax.onreadystatechange = function() {
             /*Le readystatechange sera appelé un certain
             nombre de fois selon où en est notre requête
@@ -80,8 +79,57 @@
     <a href="script/ajax.js">Fichier Ajax</a>
     <a href="script/ajax-type/ajax-type.html">Fichier Ajax-type</a>
     <a href="script/ajax-type/data.json">Fichier json</a>
+    
+ 
+
+    <p>
+        <form action="transfert/yo.php" method="GET">
+            <textarea class="textarea" cols="70" rows="10" name="text" id="text"></textarea>
+            <button type="submit" class="btnAjax">Valider</button>
+        </form>
+
+           //Transmettre des données Ajax.
+    
+    <script>
+        //Create event on button.
+        let button = document.querySelector(".btnAjax")
+            .addEventListener("click", function(x) {
+                x.preventDefault();
+                
+                //pull content textarea.
+                let textarea = document.querySelector(".textarea").value;
+                console.log(textarea);
+                // d'obtenir des données au format XML, JSON, 
+                //mais aussi HTML, ou même un simple texte à l'aide de requêtes HTTP.
+                let xhr = new XMLHttpRequest();
+                //Si GET Add parameters ici sinon si POST dans le send("text=toto");
+                xhr.open("GET", "yo.php"?text="");
+                // edit add etape...
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState)
+                }
+            })
+    </script>
+
+
+<!--4 étapes: 
+on crée la requete. let ajax = new XMLHttpRequest();
+on ouvre la requete. ajax.open('GET', 'fichier.txt', true);
+On place la function.  ajax.onreadystatechange = function() {}
+on exécute la requete. et 4 étape sont appeler ici. ajax.send();
+-->
+    </p>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
 
 
 
